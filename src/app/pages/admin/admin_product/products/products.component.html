@@ -1,0 +1,106 @@
+<div class="relative overflow-x-auto shadow-md sm:rounded-lg">
+  <h1 class="pb-4 text-center text-4xl font-extrabold dark:text-balck">
+    Product List
+  </h1>
+  <div class="flex">
+    <button
+      routerLink="/admin/products_create"
+      class="mb-4 bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+    >
+      Create New Product
+    </button>
+    <div class="mb-5">
+      <select
+        [(ngModel)]="productAdd.category"
+        name="category"
+        id="category"
+        class="w-full rounded-md border border-[#e0e0e0] bg-blue-500 py-3 px-6 text-base font-medium text-white outline-none focus:border-[#6A64F1] focus:shadow-md"
+      >
+        <option value="" disabled>Select category</option>
+        <option *ngFor="let category of categoryAll" [ngValue]="category.id">
+          {{ category.category }}
+        </option>
+      </select>
+    </div>
+  </div>
+  <table class="min-w-full">
+    <thead class="bg-white border-b">
+      <tr>
+        <th
+          scope="col"
+          class="text-sm font-medium text-gray-900 px-6 py-4 text-left"
+        >
+          Product name
+        </th>
+        <th
+          scope="col"
+          class="text-sm font-medium text-gray-900 px-6 py-4 text-left"
+        >
+          Description
+        </th>
+        <th
+          scope="col"
+          class="text-sm font-medium text-gray-900 px-6 py-4 text-left"
+        >
+          Category
+        </th>
+        <th
+          scope="col"
+          class="text-sm font-medium text-gray-900 px-6 py-4 text-left"
+        >
+          Price
+        </th>
+        <th
+          scope="col"
+          class="text-sm font-medium text-gray-900 px-6 py-4 text-left"
+        >
+          Action
+        </th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let product of productList" class="bg-gray-100 border-b">
+        <th
+          scope="row"
+          class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900"
+        >
+          {{ product.title }}
+        </th>
+        <!-- truncateDescription(120) -->
+        <td
+          class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap"
+        >
+          {{ product.description | description : 120 }}
+        </td>
+        <td
+          class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap"
+        >
+          {{ product.category }}
+        </td>
+        <td
+          class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap"
+        >
+          ${{ product.price }}
+        </td>
+        <td
+          class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap flex gap-2"
+        >
+          
+          <a
+            [routerLink]="['/admin/products_edit', product.id]"
+            class="font-medium text-blue-600 dark:text-blue-500 hover:underline"
+            >Edit
+          </a>
+          <button
+            (click)="handleDeleteProduct(product.id)"
+            class="font-medium text-red-600 dark:text-red-500 hover:underline"
+          >
+            Remove
+          </button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<!-- component -->

@@ -1,0 +1,36 @@
+<header>
+    <nav class="bg-white border-gray-200 px-4 lg:px-6 py-2.5">
+        <div class="flex flex-wrap justify-between items-center mx-auto max-w-screen-xl">
+            <div class="flex items-center">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-red-500" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M9 3v2m6-2v2M9 19v2m6-2v2M5 9H3m2 6H3m18-6h-2m2 6h-2M7 19h10a2 2 0 002-2V7a2 2 0 00-2-2H7a2 2 0 00-2 2v10a2 2 0 002 2zM9 9h6v6H9V9z" />
+                </svg>
+                <span class="ml-2 font-semibold text-[#252C32]">What a Market</span>
+              </div>
+            <div [ngClass]="{'hidden' : navigationHiddenOrShow, 'block': !navigationHiddenOrShow}"
+                class="justify-center items-center w-full lg:flex lg:w-auto lg:order-1" id="mobile-menu-2">
+                <ul class="flex flex-col mt-4 font-medium lg:flex-row lg:space-x-8 lg:mt-0 lg:mr-5">
+                    <li *ngFor="let menu of menuList">
+                        <a [routerLink]="menu.link" (click)="onClickMenu()"
+                            class="block py-2 pr-4 pl-3 text-gray-700 border-b border-gray-100 hover:bg-gray-50 lg:hover:bg-transparent lg:border-0 lg:hover:text-primary-700 lg:p-0 ">
+                            {{ menu.label }}
+                        </a>
+                    </li>
+                </ul>
+                <div *ngIf="user" class="relative group flex gap-2">
+                    <h2>Hello, {{user.user.name}}</h2>
+
+                    <button (click)="logOut()">Đăng xuất</button>
+
+                </div>
+                <div *ngIf="!user">
+                    <a routerLink="/login"
+                        class="p-2 lg:px-4 md:mx-2 text-indigo-600 text-center border border-transparent rounded hover:bg-indigo-100 hover:text-indigo-700 transition-colors duration-300">Login</a>
+                    <a routerLink="/signup"
+                        class="p-2 lg:px-4 md:mx-2 text-indigo-600 text-center border border-solid border-indigo-600 rounded hover:bg-indigo-600 hover:text-white transition-colors duration-300 mt-1 md:mt-0 md:ml-1">Signup</a>
+                </div>
+
+            </div>
+        </div>
+    </nav>
+</header>

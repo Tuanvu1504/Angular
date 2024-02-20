@@ -1,0 +1,119 @@
+<!--  -->
+ 
+<h3 class="text-center font-semibold text-4xl text-gray-900 dark:text-black">
+  Edit Product
+</h3>
+
+<div class="flex items-center justify-center p-12">
+  <div class="mx-auto w-full max-w-[550px]">
+    <form (ngSubmit)="handleSubmit()">
+      <div class="mb-5">
+        <label
+          for="name"
+          class="mb-3 block text-base font-medium text-[#07074D]"
+        >
+          Title
+        </label>
+        <input
+        [(ngModel)]="productEdit.title"
+          type="text"
+          name="name"
+          id="title"
+          placeholder="Title of product"
+          class="w-full rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md"
+        />
+      </div>
+      <div class="mb-5">
+        <label
+          for="name"
+          class="mb-3 block text-base font-medium text-[#07074D]"
+        >
+          Image
+        </label>
+        <input
+        [(ngModel)]="productEdit.image"
+          type="text"
+          name="imaeg"
+          id="image"
+          placeholder="Image of product"
+          class="w-full rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md"
+        />
+      </div>
+      <div class="mb-5">
+        <label
+          for="name"
+          class="mb-3 block text-base font-medium text-[#07074D]"
+        >
+         Price
+        </label>
+        <input
+        [(ngModel)]="productEdit.price"
+          type="number"
+          name="price"
+          id="price"
+          placeholder="Price of product"
+          class="w-full rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md"
+        />
+      </div>
+      <div class="mb-5">
+        <label
+          for="rate"
+          class="mb-3 block text-base font-medium text-[#07074D]"
+        >
+        Rate
+        </label>
+        <input
+        [(ngModel)]="productEdit.rate"
+          type="number"
+          name="rate"
+          id="rate"
+          placeholder="example@domain.com"
+          class="w-full rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md"
+        />
+      </div>
+      <div class="mb-5">
+        <label
+          for="subject"
+          class="mb-3 block text-base font-medium text-[#07074D]"
+        >
+          Category
+        </label>
+        <select
+          [(ngModel)]="productEdit.category"
+          name="category"
+          id="category"
+        class="w-full rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md"
+        >
+        <option value="" disabled>Select category</option>
+        <option *ngFor="let category of categoryList" [value]="category.category">
+          {{ category.category }}
+        </option>
+        </select>
+      </div>
+      <div class="mb-5">
+        <label
+          for="message"
+          class="mb-3 block text-base font-medium text-[#07074D]"
+        >
+        Description
+        </label>
+        <textarea
+        [(ngModel)]="productEdit.description"
+          rows="4"
+          name="description"
+          id="description"
+          placeholder="Write product description here"
+          class="w-full resize-none rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md"
+        ></textarea>
+      </div>
+      <div>
+        <button
+        type="submit"
+          class="hover:shadow-form rounded-md bg-[#6A64F1] py-3 px-8 text-base font-semibold text-white outline-none"
+        >
+          Update product 
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

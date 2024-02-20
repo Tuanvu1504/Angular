@@ -1,0 +1,41 @@
+
+<h1 class="pb-4 text-center text-4xl font-extrabold dark:text-balck">Create User</h1>
+<form class="max-w-md mx-auto" action="" #userForm="ngForm" (ngSubmit)="onSubmit(userForm)" enctype="multipart/form-data">
+    <div class="relative z-0 w-full mb-5 group">
+        <input [required]="true" #userName="ngModel" [(ngModel)]="formData.name" type="text" name="name" id="userName" autocomplete="given-name" class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-black dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder=" " required />
+        <label for="userName" class="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Tên tài khoản</label>
+    </div>
+    <div *ngIf="userName.invalid && (userName.touched || userForm.submitted)" class="error-message">
+        <p class="text-xs text-red-500" *ngIf="userName.errors!['required']">Vui lòng điền tên khách hàng</p>
+      </div>
+      <div class="relative z-0 w-full mb-5 group">
+        <input [required]="true" #userEmail="ngModel" [(ngModel)]="formData.email" type="email" name="userEmail" id="userEmail" autocomplete="given-name" class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-black dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder=" " required />
+        <label for="userEmail" class="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Email</label>
+    </div>
+    <div *ngIf="userEmail.invalid && (userEmail.touched || userForm.submitted)" class="error-message">
+      <p class="text-xs text-red-500" *ngIf="userEmail.errors!['required']">Vui lòng điền tên khách sạn</p>
+    </div>
+
+
+    <div class="grid md:grid-cols-2 md:gap-6">
+    
+    </div>
+    <div class="grid md:grid-cols-2 md:gap-6">
+      <label for="role" class="block text-sm font-medium leading-6 text-gray-900">Chức vụ</label>
+                <div class="mt-2 flex items-center gap-5">
+                  <div class="flex items-center gap-2">
+                    <input required #userRole="ngModel" value="admin" [(ngModel)]="formData.role" id="admin" name="role" type="radio">
+                    <label for="admin">Admin</label>
+                  </div>
+                  <div class="flex items-center gap-2">
+                    <input required #userRole="ngModel" value="member" [(ngModel)]="formData.role" id="member" name="role" type="radio">
+                    <label for="member">Member</label>
+                  </div>
+                </div>
+                <div *ngIf="!formData.role && userForm.submitted" class="error-message">
+                  <p class="text-xs text-red-500">Vui lòng chọn chức vụ</p>
+                </div>
+    </div>
+    <button type="submit" class="text-black bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Submit</button>
+  </form>
+  

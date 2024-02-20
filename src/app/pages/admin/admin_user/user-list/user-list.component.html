@@ -1,0 +1,60 @@
+<div class="relative overflow-x-auto shadow-md sm:rounded-lg">
+    <h1 class="pb-4 text-center text-4xl font-extrabold dark:text-balck">
+      User List
+    </h1>
+    <button
+      routerLink="/admin/user_add"
+      class="mb-4 bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+    >
+      Create New Product
+    </button>
+  
+    <table
+      class="min-w-full"
+    >
+      <thead
+        class="bg-white border-b"
+      >
+        <tr>
+          <th scope="col" class="text-sm font-medium text-gray-900 px-6 py-4 text-left">User name</th>
+          <th scope="col" class="text-sm font-medium text-gray-900 px-6 py-4 text-left">Email</th>
+          <th scope="col" class="text-sm font-medium text-gray-900 px-6 py-4 text-left">Chức vụ</th>
+          <th scope="col" class="text-sm font-medium text-gray-900 px-6 py-4 text-left">Action</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr
+          *ngFor="let user of listUser"
+          class="bg-gray-100 border-b"
+        >
+          <th
+            scope="row"
+            class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900"
+          >
+            {{user.name}}
+          </th>
+          <!-- truncateDescription(120) -->
+          <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">{{ user.email }}</td>
+          <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">{{ user.role | titlecase }}</td>
+
+          <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap flex gap-2">
+            <a [routerLink]="['/admin/user_edit/', user._id]">
+            <button
+              class="font-medium  text-yellow-500 dark:text-yellow-500 hover:underline"
+            >
+              Edit
+            </button>
+          </a>
+            <button
+            (click)="deleteUser(user._id)"
+              class="font-medium text-red-600 dark:text-red-500  hover:underline"
+            >
+              Remove
+            </button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  
+  <!-- component -->

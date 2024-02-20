@@ -1,0 +1,66 @@
+
+<div class="relative overflow-x-auto shadow-md sm:rounded-lg">
+    <h1 class="pb-4 text-center text-4xl font-extrabold dark:text-balck">
+      Category List
+    </h1>
+    <button
+      routerLink="/admin/category_create"
+      class="mb-4 bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+    >
+      Create New Category
+    </button>
+  
+    <table
+      class="min-w-full"
+    >
+      <thead
+        class="bg-white border-b ml-9"
+      >
+        <tr>
+          <th scope="col" class="text-sm font-medium text-gray-900 px-6 py-4 text-center">STT</th>
+          <th scope="col" class="text-sm font-medium text-gray-900 px-6 py-4 text-center">Product name</th>
+          <th scope="col" class="text-sm font-medium text-gray-900 px-6 py-4 text-left">Action</th>
+
+        </tr>
+      </thead>
+      <tbody>
+        <tr
+          *ngFor="let cate of cateList; let i = index"
+          class="bg-gray-100 border-b"
+        >
+        <th
+            scope="row"
+            class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900"
+          >
+           {{i + 1}}
+          </th>
+          <th
+            scope="row"
+            class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900"
+          >
+            {{ cate.category }}
+          </th>
+          <!-- truncateDescription(120) -->
+        
+          <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap flex gap-2">
+            <!-- `${}` -->
+            <!-- "['/admin/product', product._id]"  truyen bien vao router-->
+            <a
+              routerLink='/admin/category_edit/{{cate.id}}'
+              class="font-medium text-blue-600 dark:text-blue-500 hover:underline"
+              >Edit
+            </a>
+            <!--Envent (target)="statement" (click)="deleteProduct(product.id)" -->
+            <button
+              (click)="handleDeleteCategory(cate.id)"
+              class="font-medium text-red-600 dark:text-red-500 hover:underline"
+            >
+              Remove
+            </button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  
+  <!-- component -->
